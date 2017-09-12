@@ -56,9 +56,9 @@ class TwigMarkdownAnchorLink extends Twig_Extension
         // Check if we already have link to an anchor with the same name, and add count suffix
         $linkCounts = array_count_values(self::$links);
         $anchorSuffix = array_key_exists($anchor, $linkCounts)
-            ? '-' . $linkCounts[$anchor] : '';
+            ? '_' . $linkCounts[$anchor] : '';
         array_push(self::$links, $anchor);
 
-        return sprintf("[%s](%s)", $title, '#' . $anchor . $anchorSuffix);
+        return sprintf("[%s](%s)", $title, '#markdown-header-' . $anchor . $anchorSuffix);
     }
 }
